@@ -1,24 +1,24 @@
 package com.kopidannyemil.app.data
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
+/**
+ * State aplikasi (akun, keranjang, pesanan terakhir).
+ * Semua disimpan di memori, tanpa database.
+ */
+object AppState {
 
+    private val accounts = mutableListOf(DummyData.defaultAccount)
 
-class AppViewModel : ViewModel() {
-
-    private val accounts = mutableStateListOf(DummyData.defaultAccount)
-
-    var currentUser by mutableStateOf<Account?>(null)
+    var currentUser: Account? = null
         private set
 
-    val cart = mutableStateMapOf<Int, Int>()
+    /** id menu -> jumlah */
+    val cart = mutableMapOf<Int, Int>()
 
-    var lastOrder by mutableStateOf<OrderResult?>(null)
+    var lastOrder: OrderResult? = null
         private set
+
+    /** Dipakai supaya MainActivity pindah ke tab Home setelah halaman konfirmasi ditutup. */
+    var pendingHome: Boolean = false
 
     val displayName: String
         get() = currentUser?.fullName ?: "Nama"
@@ -32,6 +32,9 @@ class AppViewModel : ViewModel() {
     val cartTotal: Int
         get() = cartLines.sumOf { it.subtotal }
 
+    // ---------- Auth ----------
+
+    /** Mengembalikan pesan error, atau null kalau berhasil. */
     fun login(username: String, password: String): String? {
         if (username.isBlank() || password.isBlank()) return "Username dan password wajib diisi"
         val account = accounts.find {
@@ -41,6 +44,7 @@ class AppViewModel : ViewModel() {
         return null
     }
 
+    /** Mengembalikan pesan error, atau null kalau berhasil (langsung login). */
     fun register(fullName: String, username: String, password: String): String? {
         if (fullName.isBlank() || username.isBlank() || password.isBlank()) {
             return "Semua kolom wajib diisi"
@@ -70,7 +74,10 @@ class AppViewModel : ViewModel() {
         currentUser = null
         cart.clear()
         lastOrder = null
+        pendingHome = false
     }
+
+    // ---------- Keranjang & order ----------
 
     fun addToCart(id: Int) {
         cart[id] = (cart[id] ?: 0) + 1

@@ -1,89 +1,55 @@
-# ☕ Kopi dan Nyemil
+# Kopi dan Nyemil
 
-Aplikasi **Android native (Kotlin + Jetpack Compose)** untuk memesan kopi dan makanan ringan, dibuat berdasarkan wireframe tugas. Aplikasi ini memakai **data statis (dummy)** — tanpa database.
-
-> _Get a taste of your wish._
+Aplikasi pemesanan kopi dan makanan ringan berbasis Android, dibuat dengan Kotlin dan Jetpack Compose. Tampilannya mengikuti wireframe dari tugas, dan semua datanya masih dummy (tanpa database).
 
 ## Deskripsi
 
-Kopi dan Nyemil adalah aplikasi pemesanan sederhana. Pengguna mendaftar atau login, memilih menu makanan/minuman, mengisi alamat pengiriman, lalu mendapat konfirmasi pesanan. Seluruh data (akun, menu, keranjang, pesanan) disimpan di memori selama aplikasi berjalan.
+Di aplikasi ini pengguna bisa daftar atau login, pilih menu makanan dan minuman, isi alamat pengiriman, lalu dapat konfirmasi pesanan. Data akun, menu, keranjang, dan pesanan cuma disimpan di memori, jadi akan hilang kalau aplikasi ditutup.
 
 ## Fitur
 
-Sesuai wireframe, ada 8 layar:
+Ada 8 layar sesuai wireframe:
 
-| No | Layar | Keterangan |
-|----|-------|------------|
-| 1 | Splash / Welcome | Logo, nama, tagline, tombol **Start now** |
-| 2 | Sign up | Pilihan **Register** atau **Login** |
-| 3 | Login User | Form username & password dengan validasi |
-| 4 | Register | Form nama lengkap, username, password (validasi + cek username unik) |
-| 5 | Home | Sapaan "Halo {nama}", daftar **7 menu**, filter kategori, tambah/kurangi jumlah, bar keranjang |
-| 6 | Profile | Ubah nama (Save) + Logout |
-| 7 | Alamat pengiriman (Order) | Nama, alamat, patokan, ringkasan pesanan & total, tombol **Order dan Kirim** |
-| 8 | Konfirmasi pesanan | Pesan terima kasih + rincian pesanan, tombol **Oke** |
+1. Splash / Welcome
+2. Sign up (pilih Register atau Login)
+3. Login
+4. Register
+5. Home (daftar menu)
+6. Profile
+7. Alamat pengiriman (Order)
+8. Konfirmasi pesanan
 
-Pengembangan tambahan dari wireframe:
+Beberapa hal yang ditambahkan di luar wireframe:
 
-- Desain modern bertema kopi (Material 3, warna cokelat/krem).
-- Bottom navigation (Home / Order / Profile).
-- Keranjang: tambah/kurangi jumlah item, total harga otomatis dalam format Rupiah.
-- Filter kategori Semua / Minuman / Makanan.
-- Tombol "Order dan Kirim" aktif hanya jika keranjang & alamat terisi.
+- Daftar menu ada 7 item, bisa difilter per kategori (Semua, Minuman, Makanan).
+- Item bisa ditambah atau dikurangi jumlahnya, dan total harga langsung dihitung.
+- Bottom navigation untuk pindah antara Home, Order, dan Profile.
+- Validasi di form login dan register, misalnya username tidak boleh sama dan password minimal 6 karakter.
+- Tombol logout di halaman Profile.
 
-### Akun demo
+Untuk mencoba tanpa daftar, pakai akun demo ini:
 
-| Username | Password |
-|----------|----------|
-| `kopi` | `123456` |
-
-Atau buat akun baru lewat halaman **Register**.
-
-## Teknologi
-
-- **Kotlin** 1.9.24
-- **Jetpack Compose** (BOM 2024.09.00) + **Material 3**
-- **Navigation Compose** 2.8.0
-- **ViewModel** (state di memori)
-- Android Gradle Plugin 8.5.2, minSdk 24, targetSdk 34
-
-## Struktur Project
-
-```
-app/src/main/java/com/kopidannyemil/app/
-├── MainActivity.kt
-├── data/            # Model, data dummy, AppViewModel
-├── navigation/      # NavHost, rute, bottom navigation
-└── ui/
-    ├── theme/       # Warna & tema
-    ├── components/  # Tombol, text field, logo
-    └── screens/     # 8 layar aplikasi
-```
-
-## Cara Menjalankan
-
-1. Install **Android Studio** (Koala atau lebih baru) dengan **JDK 17** (bawaan Android Studio sudah cukup).
-2. Clone repository:
-   ```bash
-   git clone https://github.com/<username>/<nama-repo>.git
-   ```
-3. Buka folder project di Android Studio (**File → Open**), tunggu **Gradle Sync** selesai.
-4. Pilih emulator (API 24+) atau hubungkan HP Android dengan USB debugging aktif.
-5. Klik **Run ▶** .
-
+- Username: `Faiz`
+- Password: `123456`
+## Screenshoot
 ## Screenshot
-
-Taruh screenshot di folder `docs/screenshots/` lalu sesuaikan nama file di bawah.
 
 | Splash | Sign up | Login | Register |
 |:--:|:--:|:--:|:--:|
 | ![Splash](docs/screenshots/01-splash.png) | ![Sign up](docs/screenshots/02-signup.png) | ![Login](docs/screenshots/03-login.png) | ![Register](docs/screenshots/04-register.png) |
 
-| Home | Profile | Alamat | Konfirmasi |
-|:--:|:--:|:--:|:--:|
-| ![Home](docs/screenshots/05-home.png) | ![Profile](docs/screenshots/06-profile.png) | ![Alamat](docs/screenshots/07-alamat.png) | ![Konfirmasi](docs/screenshots/08-konfirmasi.png) |
+| Home | Profile | Order |
+|:--:|:--:|:--:|
+| ![Home](docs/screenshots/05-home.png) | ![Profile](docs/screenshots/06-profile.png) | ![Order](docs/screenshots/07-order.png) |
+## Teknologi
 
-## Pembuat
+- Kotlin 1.9.24
+- Android View (layout XML) + ViewBinding
+- Material Components (BottomNavigationView, MaterialButton, TextInputLayout)
+- Activity + Fragment, RecyclerView
+- Android Gradle Plugin 8.5.2 (minSdk 24, targetSdk 34)
 
-- Nama: _isi nama & NIM_
-- Mata kuliah: _isi mata kuliah_
+
+## Dibuat oleh
+
+- Nama / NIM: FAIZ ABDULLAH FAWAZ/1247050114

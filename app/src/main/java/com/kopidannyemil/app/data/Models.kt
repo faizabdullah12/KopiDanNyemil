@@ -45,8 +45,8 @@ fun Int.toRupiah(): String =
 
 object DummyData {
     val defaultAccount = Account(
-        fullName = "Faiz Abdullah",
-        username = "Faiz",
+        fullName = "Faiz",
+        username = "faizabdfwz12",
         password = "123456"
     )
 

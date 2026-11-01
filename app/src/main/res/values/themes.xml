@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.KopiDanNyemil" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">#FFFBF7</item>
-        <item name="android:navigationBarColor">#FFFFFF</item>
+    <style name="Theme.KopiDanNyemil" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/espresso</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/caramel</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/peach</item>
+        <item name="colorOnSecondaryContainer">@color/espresso</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/espresso</item>
+        <item name="colorError">@color/error</item>
+        <item name="android:windowBackground">@color/app_background</item>
+        <item name="android:statusBarColor">@color/app_background</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowBackground">#FFFBF7</item>
     </style>
 </resources>
